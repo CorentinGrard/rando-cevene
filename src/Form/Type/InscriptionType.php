@@ -11,9 +11,17 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class InscriptionType extends AbstractType
 {
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'randonnee' => null,
+        ));
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -25,6 +33,7 @@ class InscriptionType extends AbstractType
                 'class' => Randonnee::class,
                 'choice_label' => 'titre',
                 'multiple' => true,
+                'data' =>  [$options['randonnee']],
                 'query_builder' => function (RandonneeRepository $randonneeRepository) {
                     return $randonneeRepository->createQueryBuilder('r')
                         ->orderBy('r.date', 'ASC');

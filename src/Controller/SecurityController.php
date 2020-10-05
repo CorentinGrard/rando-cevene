@@ -9,6 +9,15 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="home")
+     */
+    public function home()
+    {
+        return $this->redirectToRoute("randonneeHome");
+    }
+
     /**
      * @Route("/login", name="app_login")
      */

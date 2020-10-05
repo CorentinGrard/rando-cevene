@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Randonnee index{% endblock %}
+
+{% block content %}
+    <h1>Randonnee index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Duree</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for randonnee in randonnees %}
+            <tr>
+                <td>{{ randonnee.id }}</td>
+                <td>{{ randonnee.titre }}</td>
+                <td>{{ randonnee.description }}</td>
+                <td>{{ randonnee.duree }}</td>
+                <td>{{ randonnee.date ? randonnee.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('randonnee_show', {'id': randonnee.id}) }}">show</a>
+                    <a href="{{ path('randonnee_edit', {'id': randonnee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('randonnee_new') }}">Create new</a>
+{% endblock %}

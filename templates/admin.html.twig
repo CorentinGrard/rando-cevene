@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Admin
+{% endblock %}
+
+{% block content %}
+	<ul class="list-group">
+		<li class="list-group-item">
+			<a href="{{ path('randonnee_index')}}">Admin Randonnee
+			</a>
+		</li>
+        		<li class="list-group-item">
+			<a href="{{ path('categorie_index')}}">Admin Categories
+			</a>
+		</li>
+        		<li class="list-group-item">
+			<a href="{{ path('inscription_index')}}">Admin Inscription
+			</a>
+		</li>
+	</ul>
+{% endblock %}

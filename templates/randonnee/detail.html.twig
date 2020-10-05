@@ -17,6 +17,6 @@
 				{{randonnee.categorie.nom}}
 			</h6>
 			<p class="card-text">{{randonnee.description}}</p>
-            <a class="btn btn-primary" href="{{ path('inscription', { id: randonnee.id}) }}">S'incrire</a>
+            <a class="btn btn-primary" href="{{ path('inscriptionNew', { id: randonnee.id}) }}">S'incrire</a>
 		</div>
 {% endblock %}

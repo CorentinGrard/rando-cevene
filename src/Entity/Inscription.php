@@ -39,6 +39,11 @@ class Inscription
      */
     private $randonnees;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
     public function __construct()
     {
         $this->randonnees = new ArrayCollection();
@@ -107,6 +112,18 @@ class Inscription
         if ($this->randonnees->contains($randonnee)) {
             $this->randonnees->removeElement($randonnee);
         }
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

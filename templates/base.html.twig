@@ -32,26 +32,29 @@
 							</li>
 							{% if is_granted('ROLE_ADMIN') %}
 								<li class="nav-item">
-									<a class="nav-link" href="">Admin</a>
-									{# {{ path('admin') }} #}
-								</li>
-							{% endif %}
-							{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_login') }}">Login</a>
-								</li>
-							{% endif %}
-							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-								</li>
-							{% endif %}
-							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('profile') }}">Profile</a>
+									<a class="nav-link" href="{{ path('admin') }}">Admin</a>
 								</li>
 							{% endif %}
 						</ul>
+						<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+							<ul class="navbar-nav ml-auto">
+								{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('app_login') }}">Login</a>
+									</li>
+								{% endif %}
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+									</li>
+								{% endif %}
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('profile') }}">Profile</a>
+									</li>
+								{% endif %}
+							</ul>
+						</div>
 					</div>
 				{% endblock %}
 			</nav>
