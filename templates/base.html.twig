@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}{% endblock %}
+			- Randonnée dans les cevenes
+		</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+		{% endblock %}
+		{% block scripts %}
+			<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+		{% endblock %}
+	</head>
+
+	<body>
+		{% block body %}
+			<nav class="navbar navbar-expand-lg navbar-light bg-success">
+				{% block sidebar %}
+					<a class="navbar-brand" href="{{ path('randonneeHome') }}">Randonnee dans les cevenes</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('categories') }}">Randonnées
+								</a>
+							</li>
+							{% if is_granted('ROLE_ADMIN') %}
+								<li class="nav-item">
+									<a class="nav-link" href="">Admin</a>
+									{# {{ path('admin') }} #}
+								</li>
+							{% endif %}
+							{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_login') }}">Login</a>
+								</li>
+							{% endif %}
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+								</li>
+							{% endif %}
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('profile') }}">Profile</a>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
+				{% endblock %}
+			</nav>
+			<div class="container">
+				{% block content %}{% endblock %}
+			</div>
+		{% endblock %}
+	</body>
+	<footer class="footer mt-auto py-3">{{ render(path('countRandonnee')) }}</footer>
 </html>

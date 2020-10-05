@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Home
+{% endblock %}
+
+{% block content %}
+	<h3>Cliquez sur le type de randonnées que vous souhaitez faire</h3>
+	<ul class="list-group">
+		{% for categorie in categories %}
+			<li class="list-group-item">
+				<a href="{{ path('randonnesParCategorie', { id: categorie.id}) }}">{{ categorie.nom }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

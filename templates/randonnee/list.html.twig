@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Randonnées
+{% endblock %}
+
+{% block content %}
+	<ul class="list-group">
+		{% for randonnee in randonnees %}
+			{% include 'randonnee/_randonneeListElement.html.twig' %}
+		{% endfor %}
+	</ul>
+{% endblock %}

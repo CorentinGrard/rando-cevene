@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{randonnee.titre}}
+{% endblock %}
+
+{% block content %}
+		<div class="card-body">
+			<h5 class="card-title">{{randonnee.titre}}</h5>
+			<h6 class="card-subtitle mb-2 text-muted">Date :
+				{{randonnee.date | date('Y-m-d')}}
+			</h6>
+			<h6 class="card-subtitle mb-2 text-muted">Duree :
+				{{randonnee.duree}}h
+			</h6>
+			<h6 class="card-subtitle mb-2 text-muted">Categorie :
+				{{randonnee.categorie.nom}}
+			</h6>
+			<p class="card-text">{{randonnee.description}}</p>
+            <a class="btn btn-primary" href="{{ path('inscription', { id: randonnee.id}) }}">S'incrire</a>
+		</div>
+{% endblock %}

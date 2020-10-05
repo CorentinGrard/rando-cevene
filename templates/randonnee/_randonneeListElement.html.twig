@@ -1,0 +1,10 @@
+<li class="list-group-item">
+	<div class="card-body">
+		<h5 class="card-title">{{randonnee.titre}}</h5>
+		<h6 class="card-subtitle mb-2 text-muted">Date :
+			{{randonnee.date | date('Y-m-d')}}
+		</h6>
+		<p class="card-text">Duree : {{randonnee.duree}}h</p> 
+		<a class="btn btn-primary" href="{{ path('randonneeDetail', { id: randonnee.id}) }}">Details</a>
+	</div>
+</li>
